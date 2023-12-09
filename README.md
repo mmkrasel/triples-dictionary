@@ -11,11 +11,11 @@ Create a dictionary for RDF triples and access the triples through triples table
 
 **#Create dictionary from triple datatsets**
 
-	./TD -d path_to_source_NT_dataset_file td_directory
+	./TD -d path_to_source_NT_dataset_file td_dictionary
 
 **#Search for triple pattern (with uri-component ids)**
 
-	./TD -q td_directory triple_pattern
+	./TD -q td_dictionary triple_pattern
 
 		- triple_pattern: s p o
 			- unbounded subject/predicate/object will be represented with x;   x x x
@@ -37,7 +37,7 @@ Create a dictionary for RDF triples and access the triples through triples table
 
 **#Search for triple pattern (with uri)**
 
-	./TD -s td_directory triple_pattern
+	./TD -s td_dictionary triple_pattern
 
     - triple_pattern: s p o
       - unbounded subject/predicate/object will be represented with x;   x x x
