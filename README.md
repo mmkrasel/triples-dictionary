@@ -32,7 +32,7 @@ Create a dictionary for RDF triples and access the triples through triples table
 
 **#Example query: Retrieve all triples having object_id "2" and predicate_id "1".
  
-    ./TD -q ../dbpedia/triple_tree x 1 2	
+    ./TD -q ../dbpedia/dictionary x 1 2	
 
 
 **#Search for triple pattern (with uri) in Triples Dictionary**
@@ -60,7 +60,7 @@ Create a dictionary for RDF triples and access the triples through triples table
 
 **#Example query: Retrieve all triples having subject "http://www.Department6.University81.edu/GraduateStudent33".**
 		
-    ./TD -s ../lubm/triple_tree http://www.Department6.University81.edu/GraduateStudent33 x x
+    ./TD -s ../lubm/dictionary http://www.Department6.University81.edu/GraduateStudent33 x x
 
 
   
