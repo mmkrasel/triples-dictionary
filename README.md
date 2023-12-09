@@ -13,7 +13,7 @@ Create a dictionary for RDF triples and access the triples through triples table
 
 	./TD -d path_to_source_NT_dataset_file td_dictionary
 
-**#Search for triple pattern (with uri-component ids)**
+**#Search for triple pattern (with uri-component ids) in Triples Dictionary**
 
 	./TD -q td_dictionary triple_pattern
 
@@ -35,7 +35,7 @@ Create a dictionary for RDF triples and access the triples through triples table
     ./TD -q ../dbpedia/triple_tree x 1 2	
 
 
-**#Search for triple pattern (with uri)**
+**#Search for triple pattern (with uri) in Triples Dictionary**
 
 	./TD -s td_dictionary triple_pattern
 
@@ -58,9 +58,9 @@ Create a dictionary for RDF triples and access the triples through triples table
 
 
 
-**#Example query: 	Find all triples having subject "http://www.Department6.University81.edu/GraduateStudent33".**
+**#Example query: Retrieve all triples having subject "http://www.Department6.University81.edu/GraduateStudent33".**
 		
-    ./TD -q ../lubm/triple_tree http://www.Department6.University81.edu/GraduateStudent33 x x
+    ./TD -s ../lubm/triple_tree http://www.Department6.University81.edu/GraduateStudent33 x x
 
 
   
