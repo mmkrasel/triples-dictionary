@@ -9,6 +9,8 @@ Create a dictionary for RDF triples and access the triples through triples table
 	Compiler: g++ 
 	Note: User **build.sh** to compile and build
 
+## Use of binaries as an application
+
 **#Create dictionary from triple datatsets**
 
 	./TD -d path_to_source_NT_dataset_file td_dictionary
@@ -63,4 +65,60 @@ Create a dictionary for RDF triples and access the triples through triples table
     ./TD -s ../lubm/dictionary http://www.Department6.University81.edu/GraduateStudent33 x x
 
 
-  
+## Use source codes as a C++ library
+
+**Create a dictionary from an input RDF triples dataset**
+ 
+	Dictionary dic;
+	dic.create("path_to_source_NT_dataset_file", "td_dictionary");
+	dic.flushDictionary();
+	dic.close();
+	
+**Queries on dictionay**
+ 
+	/*Open the dictionary first*/
+	Dictionary dic;
+	dic.open("td_dictionary");
+	unsigned int count;
+	TripleItem* results = NULL;
+
+	/* Get all triples, triple pattern: ? ? ? */
+	results = dic.getTripleTable(&count);
+
+	/* Get triples for pattern s ? ? */
+	unsigned int sid = dic.getSubObjId("any uri here");
+	if(sid > 0) results = dic.getTriplesForSubjectID(&count, sid);
+
+	/* Get triples for pattern ? ? o */
+	unsigned int oid = dic.getSubObjId("any uri here");
+	if(oid > 0) results = dic.getTriplesForObjectID(&count, oid);
+
+	/* Get triples for pattern ? p ? */
+	unsigned int pid = dic.getPredicateId("any uri here");
+	if(pid > 0) results = dic.getTriplesForPredicateID(&count, pid);
+
+	/* Get triples for pattern s ? o */
+ 	....
+	if(sid>0 && oid>0) results = dic.getTriplesForSubObjIDs(&count, sid, oid);
+
+	/* Get triples for pattern s p ? */
+ 	....
+	if(sid>0 && pid>0) results = dic.getTriplesForSubPredicateIDs(&count, sid, pid);
+
+	/* Get triples for pattern ? p o */
+ 	....
+	if(oid>0 && pid>0) results = dic.getTriplesForPredicateObjIDs(&count, pid, oid);
+
+	/* Get triples for pattern s p o */
+ 	....
+	if(sid>0 && oid>0 && pid>0) results = dic.doesExist(&count, sid, oid, pid);
+
+	/* Print all triples */
+	if(count > 0)
+		for(int i=0; i<count; i++){
+			cout << dic.getSubObj(results[i].sub) << "\t";
+   			cout << dic.getPredicate(results[i].pred) << "\t";
+	  		cout << dic.getSubObj(results[i].obj) << endl;
+		}
+	dic.close();
+
